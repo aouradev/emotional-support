@@ -45,12 +45,18 @@ namespace EmotionalSupport
             car.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             car.transform.localRotation = Quaternion.Euler(new Vector3(-95, 90, 0));
 
-            car.AddComponent<MeshCollider>();
+            car.AddComponent<BoxCollider>();
             car.AddComponent<GorillaSurfaceOverride>();
+            car.AddComponent<AudioSource>();
+            car.AddComponent<Meow>();
+
+            car.layer = 18;
             
             GorillaSurfaceOverride carGorillaSurfaceOverride = car.GetComponent<GorillaSurfaceOverride>();
+            BoxCollider carBoxCollider = car.GetComponent<BoxCollider>();
 
             carGorillaSurfaceOverride.overrideIndex = 3;
+            carBoxCollider.isTrigger = true;
 
             Debug.Log("car");
         }
